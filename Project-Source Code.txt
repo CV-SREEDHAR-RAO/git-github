@@ -1,0 +1,129 @@
+package Project;
+import java.util.*;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+
+
+public class Lockedme {
+	
+	//creating the file
+	
+	public static void create() throws IOException
+	{
+		FileOutputStream fos1 = new FileOutputStream("E:\\Java Project\\javafile.txt");
+	}
+	
+	//writing the file
+	
+	public static void write() throws IOException
+	{
+		FileOutputStream fos1 = new FileOutputStream("E:\\Java Project\\File-1.txt");
+		String st="Writing in Java file";
+		fos1.write(st.getBytes());
+		fos1.close();
+	}
+	
+	//deleting the file
+	
+	public static void delete() throws IOException
+	{
+	  File file=new File("E:\\Java Project\\sample.txt");
+	  if(file.delete())
+	  {
+		  System.out.println(file+" "+"got deleted");
+	  }
+	  else
+	  {
+		  System.out.println("\nFile not found...");
+	  }
+	}
+	
+	//searching the file
+	
+	public static void search() throws IOException
+	{
+		File f1=new File("E:\\Java Project\\File-1.txt");
+		System.out.println("Abs path :"+f1.getAbsolutePath());
+		System.out.println("File name: "+f1.getName());
+		System.out.println("File alrady exist: "+f1.exists());
+	}
+	
+	//display the files in sorted order(ascending)
+	
+	public static void fileorder() throws IOException
+	{
+		String path="E://Java Project";
+		File file=new File(path);
+		File sortas[]=file.listFiles();
+		Arrays.sort(sortas);
+		for(File n: sortas)
+		{
+			if(n.isFile())
+			{
+				System.out.println("File: "+n.getName());
+			}
+			else
+			{
+				System.out.println("Not known "+n.getName());
+			}
+		}
+	}
+	
+	//Main program
+	
+	public static void main(String[] args) throws IOException
+	{
+		
+		//variable declaration
+		
+		int a;
+		String st;
+		
+		//do while start point
+		
+		do {
+		
+		//Entry Screen
+			
+		System.out.println("\n|**********************Welcome to Lokedme.com**********************|");
+		System.out.println("\nMenu options");
+		System.out.println("-------------");
+		System.out.println("Press/Enter the No to perform action");
+		System.out.println("\n1. File Creation");
+		System.out.println("2. Write data in to the file");
+		System.out.println("3. Deleting the File");
+		System.out.println("4. Searching the File");
+		System.out.println("5. Retrieving the File in ascendeing Order");
+		Scanner sc=new Scanner(System.in);
+		System.out.println("\nEnter your input: ");
+		a=sc.nextInt();
+		
+		//Switch Case
+		
+		switch(a)
+		{
+		case 1: create();
+		System.out.println("Javafile created Successfully!");
+		break;
+		case 2: write();
+		System.out.println("File-1 writing completed!");
+		break;
+		case 3:delete();		   
+		break;
+		case 4:search();
+		System.out.println("\nSearching the file task completed!");
+		break;
+		case 5:fileorder();
+		System.out.println("Files sorted successfully!");
+		break;
+		default:System.out.println("Invalid Input...Please try again...");
+		}
+		System.out.println("\nDo you want to continue(yes/no): ");
+		st=sc.next();
+		} while(st.equals("yes")); // do while loop end
+		
+	System.out.println("Application interface is closed");	
+	}
+	
+}
